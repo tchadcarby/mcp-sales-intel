@@ -7,6 +7,10 @@ Three bugs this replaces (all hit during the first build):
      Frames are now forced onto a fixed canvas with -extent.
   2. Blank lines collapsed to zero height -> emitted as &nbsp; instead.
   3. Pango requires '#'-prefixed colours; bare hex fails to parse.
+
+The session carries explicit page-break sentinels (a line containing only
+\\f) so a result table is never split across two frames. A frame boundary in
+the middle of a table reads as truncated output to anyone reviewing the GIF.
 """
 from __future__ import annotations
 
@@ -16,7 +20,8 @@ import subprocess
 import sys
 
 BG, FG, ACC, CYA, YEL = "#0f1216", "#d6e2ea", "#4ade80", "#38bdf8", "#fbbf24"
-LINES_PER_FRAME = 11
+MAX_LINES = 9          # hard cap per frame
+PAGE_BREAK = "\f"     # form feed = explicit page break sentinel
 
 
 def colour_for(s: str) -> str:
@@ -29,6 +34,30 @@ def colour_for(s: str) -> str:
     if s.startswith("OK"):
         return ACC
     return FG
+
+
+def paginate(lines: list[str]) -> list[list[str]]:
+    """Split on explicit page breaks, then hard-wrap anything still too long."""
+    pages: list[list[str]] = []
+    current: list[str] = []
+    for ln in lines:
+        if ln == PAGE_BREAK:
+            if current:
+                pages.append(current)
+            current = []
+        else:
+            current.append(ln)
+    if current:
+        pages.append(current)
+
+    out: list[list[str]] = []
+    for page in pages:
+        while len(page) > MAX_LINES:
+            out.append(page[:MAX_LINES])
+            page = page[MAX_LINES:]
+        if page:
+            out.append(page)
+    return out
 
 
 def main() -> int:
@@ -48,11 +77,7 @@ def main() -> int:
         print("empty session", file=sys.stderr)
         return 1
 
-    frames = [
-        lines[i : i + LINES_PER_FRAME]
-        for i in range(0, len(lines), LINES_PER_FRAME)
-    ]
-
+    frames = paginate(lines)
     paths = []
     for idx, chunk in enumerate(frames):
         rows = []

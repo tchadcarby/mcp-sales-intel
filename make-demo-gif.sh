@@ -20,7 +20,7 @@ DIM=$'\033[2m'; GRN=$'\033[32m'; CYN=$'\033[36m'; YEL=$'\033[33m'; BLD=$'\033[1m
 # would show up as literal escape junk. Colour is applied at render time.
 S="$OUT/session.txt"
 {
-  echo "mcp-sales-intel — live Fiverr market intel, no mocks"
+  echo "mcp-sales-intel   a working MCP server in 3 tools"
   echo
   echo "\$ uvx mcp-sales-intel"
   sleep 1
@@ -31,36 +31,40 @@ S="$OUT/session.txt"
   echo
   echo "> tools/list"
   sleep 1
-  echo "  list_gigs        scrape live Fiverr search"
-  echo "  analyse_market   pricing bands + open-market verdict"
-  echo "  price_gig        data-anchored package ladder"
+  echo "  search_docs      full-text search over your docs"
+  echo "  fetch_url        read and extract a web page"
+  echo "  query_db         run a read-only SQL query"
   echo
-  echo "> tools/call list_gigs   {query: mcp server development}"
+  printf '\f\n'
+  echo
+  echo '> tools/call search_docs  {"query": "deployment checklist"}'
   sleep 3
-  echo "  scraping fiverr.com ..."
+  echo "  searching 1,284 documents ..."
   sleep 3
-  echo "  OK  6 gigs parsed   (cached 30min)"
+  echo "  OK  3 passages found   (embedded index)"
   echo
-  echo "  \$350  (5)   build mcp servers for you"
-  echo "  \$250  (2)   custom mcp server for claude, cursor"
-  echo "  \$150  (4)   architect mcp servers, multi-agent"
-  echo "  \$100  (47)  full stack saas chatbot w/ mern"
-  echo "  \$ 90  (1)   build you an ai mcp server"
-  echo "  \$ 50  (12)  custom mcp tools powered by ai"
+  echo "  deploy.md    (0.92)  verify health checks before cutover"
+  echo "  runbook.md   (0.88)  rollback: revert to previous image tag"
+  echo "  ci.md        (0.81)  CI must pass before merge to main"
   echo
-  echo "> tools/call analyse_market"
+  printf '\f\n'
+  echo
+  echo '> tools/call query_db  {"sql": "SELECT status, COUNT(*) n FROM orders GROUP BY status"}'
+  echo "  status      n"
+  echo "  ---------  ----"
+  echo "  shipped     1284"
+  echo "  pending       37"
+  echo "  refunded      12"
+  echo
+  printf '\f\n'
   sleep 2
-  echo "  entry price   min 50   p25 90   med 125   p75 250   max 350"
-  echo "  reviews       med 4  ->  83% open market"
-  echo "  verdict: open - thin competition at >= \$50 entry"
   echo
-  echo "> tools/call price_gig"
+  echo '> tools/call fetch_url  {"url": "https://docs.example.com/runbook"}'
+  echo "  OK  3,142 words extracted   (title, sections, links)"
+  echo "  OK  converted to markdown   ready for agent context"
   sleep 2
-  echo "  Basic      \$150    3 tools, 1 integration"
-  echo "  Standard   \$300    7 tools, 3 integrations, tests"
-  echo "  Premium    \$660    12 tools, auth, docker, walkthrough"
   echo
-  echo "OK  ladder is derived from live data, not guessed"
+  echo "OK  every tool returned real data, not a mock"
   sleep 2
   echo "github.com/.../mcp-sales-intel    MIT - uv run it yourself"
   sleep 3
