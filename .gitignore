@@ -5,3 +5,6 @@ dist/
 build/
 *.egg-info/
 .env
+demo/*.png
+demo/seq*.txt
+demo/session.txt
