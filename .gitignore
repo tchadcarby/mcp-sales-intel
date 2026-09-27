@@ -8,3 +8,5 @@ build/
 demo/*.png
 demo/seq*.txt
 demo/session.txt
+demo/seq*.txt
+demo/frames.txt

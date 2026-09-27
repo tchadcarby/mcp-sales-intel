@@ -1,4 +1,0 @@
-/home/cloudstrife/projects/mcp-sales-intel/demo/s00.png
-/home/cloudstrife/projects/mcp-sales-intel/demo/s01.png
-/home/cloudstrife/projects/mcp-sales-intel/demo/s02.png
-/home/cloudstrife/projects/mcp-sales-intel/demo/s03.png
