@@ -5,8 +5,11 @@ dist/
 build/
 *.egg-info/
 .env
+
+# demo intermediates — only the final GIF is tracked
 demo/*.png
 demo/seq*.txt
-demo/session.txt
-demo/seq*.txt
+demo/seq*.raw
+demo/seq*.raw2
 demo/frames.txt
+demo/session.txt
