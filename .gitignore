@@ -7,9 +7,13 @@ build/
 .env
 
 # demo intermediates — only the final GIF is tracked
-demo/*.png
+demo/th_*.png
+demo/seq*.png
 demo/seq*.txt
 demo/seq*.raw
 demo/seq*.raw2
 demo/frames.txt
 demo/session.txt
+
+# local scrape cache, not part of the deliverable
+.firecrawl/
