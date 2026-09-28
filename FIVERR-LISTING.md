@@ -166,6 +166,7 @@ Competitors in this category have no proof. Ship all three:
 1. **Animated GIF (< 8s, loop):** terminal showing the server starting, a
    `list_tools` call returning the tools, and a real tool call returning live
    Fiverr data. This repo does exactly this — `uv run` and it works.
+   https://github.com/tchadcarby/mcp-sales-intel
 2. **"Built on SDK 2.x" badge** in the thumbnail. Instantly separates you from
    the v1 crowd.
 3. **First image = the 2.x warning.** Most sellers' first image is stock
@@ -176,8 +177,9 @@ Competitors in this category have no proof. Ship all three:
 
 ## PROOF ASSET (free with Basic, drives the "verify before you pay" claim)
 Public repo: `mcp-sales-intel` — a working server anyone can `uv run` and hit
-live data with. Point to it in the description. No competitor is offering a
-runnable artifact.
+live data with, before paying a cent.
+**https://github.com/tchadcarby/mcp-sales-intel**
+Point to it in the description. No competitor is offering a runnable artifact.
 
 ---
 
